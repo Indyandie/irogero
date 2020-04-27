@@ -4,6 +4,6 @@ import App from './Components/App'
 const app = new App({
     target: document.body,
     props: {
-        name: 'world'
+        // Add props here
     }
 })
