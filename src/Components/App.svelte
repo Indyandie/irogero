@@ -1,24 +1,34 @@
 <script>
-  import Button from './Button'
-  export let name = "anon";
+  import Header from './Header'
+  import ColorWell from './ColorWell'
+  import ColorPalBase from './ColorPalBase'
+
+  let selColor = '#56ac89' // initial color
+  let selSteps = 2
+
 </script>
 
+
+<Header bgColor={selColor} />
+<main>
+
+  <p>Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p>
+
+  <ColorWell bind:wellColor={selColor} margin/>
+  <!-- <input type="text" bind:value={selColor}> -->
+
+  <ColorPalBase bind:baseColor={selColor} bind:steps={selSteps}/>
+
+</main>
+
+
 <style>
-  h1 {
-    color: rosybrown
+  main {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
-  p {
-    font-size: 1.5em
-  }
 </style>
-
-<h1>App</h1>
-
-<p>
-  Hello {name}!
-</p>
-
-<Button/>
-<Button buttonName={"Hello"}/>
-
