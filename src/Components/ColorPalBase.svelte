@@ -3,6 +3,7 @@
     import { beforeUpdate } from 'svelte'
     import InputRange from './InputRange'
     import PalColor from './PalColor'
+    import Colorwave from './Colorwave'
     import { generate, createPal } from '../js/color-gen'
     import chm from 'chroma-js'
 
@@ -28,7 +29,7 @@
     export let steps = 3
     let hueBound = 22
     let satBound = 50
-    let lightBound = 75
+    let lightBound = 30
     $: baseColorHue = chm(baseColor).hsv()[0]
     $: baseColorSat = chm(baseColor).hsv()[1] * 100
     $: baseColorLight = chm(baseColor).hsv()[2] * 100
@@ -40,6 +41,9 @@
     $: darkColorSat = convertSatVal(baseColorSat + satBound )
     $: darkColorLight = convertSatVal(baseColorLight - lightBound)
     $: basePal = []
+    let hueWave = 'easeInQuad'
+    $: satWave = 'easeInSine'
+    $: lightWave = 'easeOutSine'
 
 
 // onMount( async() => {
@@ -49,17 +53,21 @@
 beforeUpdate( async () => {
     
     let palLt = createPal(
-        steps, lightColorHue, baseColorHue, 
+        steps, 
+        lightColorHue, baseColorHue, 
         lightColorSat, baseColorSat, 
-        lightColorLight, baseColorLight 
+        lightColorLight, baseColorLight,
+        hueWave, satWave,  
     )
 
     palLt.pop()
 
     let palDk = createPal(
-        steps, baseColorHue, darkColorHue, 
+        steps, 
+        baseColorHue, darkColorHue, 
         baseColorSat, darkColorSat, 
-        baseColorLight, darkColorLight 
+        baseColorLight, darkColorLight, 
+        hueWave, undefined, lightWave
     )
     
     basePal = [].concat(palLt, palDk);
@@ -71,11 +79,13 @@ beforeUpdate( async () => {
 
 <!-- {@debug palette} -->
 
-<section>
-
-    <h2>Base Palette</h2>
-
+<div>
     <InputRange bind:rngVal={steps} rngMin={2} rngMax={32} rngLabel={'Steps'} margin/>
+    <Colorwave bind:selectedWave={satWave} />
+    <Colorwave bind:selectedWave={lightWave} />
+</div>
+
+<section>
     
 {#each basePal as item}
     <PalColor textColor={item.displayColor} colorName={item.label} colorHex={item.hex}/>
@@ -88,5 +98,9 @@ beforeUpdate( async () => {
 <style>
     section {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
+
 </style>
