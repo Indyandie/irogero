@@ -23,14 +23,6 @@ function distribute(value, rangeA, rangeB, hue) {
                 return (result + 359)
             }
 
-            console.log(`
-                the difference is ${(toLow - toHigh)}
-                toLow ${(toLow)}
-                toHigh ${(toHigh)}
-                toHighNew ${(toHighNew)}
-                result ${(result)}
-            `)
-
             return result
         } else if (((toLow - toHigh) > 180) && (toLow < toHigh)) {
             // let toHighNew = (toHigh + 360)
@@ -44,31 +36,12 @@ function distribute(value, rangeA, rangeB, hue) {
                 return (result + 359)
             }
 
-            console.log(`
-                the difference is ${(toLow - toHigh)}
-                toLow ${(toLow)}
-                toHigh ${(toHigh)}
-                toHighNew ${(toHighNew)}
-                result ${(result)}
-            `)
-
             return result
         }
 
         let colorDiff = toHigh - toLow
         const result = (value * colorDiff) + toLow
 
-        console.log(`
-        ##### 💽 Hue Distrubute ###### \n 
-        value ${value}\n
-        rngA ${rangeA}\n
-        rngB ${rangeB}\n
-        to low ${toLow}\n
-        to high ${toHigh}\n
-        fromlow ${fromLow}\n
-        from high ${fromHigh}\n
-        result ${result}\n
-        `)
 
         return result;
 
@@ -80,32 +53,16 @@ function distribute(value, rangeA, rangeB, hue) {
 
         if (toLow < toHigh) {
             if (result < toLow) {
-                console.log(`
-                    🌟return ${toLow}
-                    ******* end ******* 
-                    `)
                 return toLow;
             }
             if (result > toHigh) {
-                console.log(`
-                    🌟return ${toHigh}
-                    ******* end ******* 
-                    `)
                 return toHigh;
             }
         } else {
             if (result > toLow) {
-                console.log(`
-                    🌟return ${toLow}
-                    ******* end ******* 
-                    `)
                 return toLow;
             }
             if (result < toHigh) {
-                console.log(`
-                    🌟return ${toLow}
-                    ******* end ******* 
-                    `)
                 return toHigh;
             }
         }
@@ -117,7 +74,7 @@ function distribute(value, rangeA, rangeB, hue) {
 
 export function generate({specs}) {
 
-    console.log(`####### Genenerate Started ##########`)
+    // console.log(`####### Genenerate Started ##########`)
     
     function generateNumberOfSteps(curve, steps) {
 
@@ -126,7 +83,7 @@ export function generate({specs}) {
         Array.from(Array(steps).keys()).forEach((step) => {
             const value = curve(step / (steps - 1));
             array.push(value);
-            console.log(value)
+            // console.log(value)
         });
 
         array.reverse();
@@ -137,9 +94,9 @@ export function generate({specs}) {
 
     let sat_array = generateNumberOfSteps(Curves[specs.sat_curve], specs.steps);
 
-    console.log(`####### 🎨🎨🎨 Hue Array 🎨🎨🎨 ##########`)
+    // console.log(`####### 🎨🎨🎨 Hue Array 🎨🎨🎨 ##########`)
     let hue_array = generateNumberOfSteps(Curves[specs.hue_curve], specs.steps);
-    console.log( hue_array )
+    // console.log( hue_array )
 
     const lum_array_adjusted = [];
     const sat_array_adjusted = [];
@@ -159,7 +116,7 @@ export function generate({specs}) {
     });
 
     // Hue Array updated
-    console.log(`####### 🤖🤖🤖🤖 Hue Array updated 🤖🤖🤖🤖 ##########`)
+    // console.log(`####### 🤖🤖🤖🤖 Hue Array updated 🤖🤖🤖🤖 ##########`)
     
     hue_array.forEach((step) => {
         hue_array_adjusted.push(distribute(step, [0, 1], [specs.hue_start, specs.hue_end], true));
@@ -222,7 +179,7 @@ export function generate({specs}) {
 }
 
 
-export function createPal(stps, hueSt, hueEn, satSt, satEn, lumSt, lumEn ) {
+export function createPal(stps, hueSt, hueEn, satSt, satEn, lumSt, lumEn, hueWv, satWv, lumWv ) {
     let colorInput = {
         specs: {
 
@@ -231,33 +188,33 @@ export function createPal(stps, hueSt, hueEn, satSt, satEn, lumSt, lumEn ) {
 
             // # HUE
             // Hue Start Value (0 - 359)
-            hue_start: hueSt,
+            hue_start: hueSt || 120,
             // Hue End Value (0 - 359)
-            hue_end: hueEn,
+            hue_end: hueEn || 280,
 
 
             // Hue Curve (See Curves Section)
-            hue_curve: "easeInQuad",
+            hue_curve: hueWv || "easeInQuad",
 
 
             // Saturation Start Value (0 - 100)
-            sat_start: satSt,
+            sat_start: satSt || 0,
             // Saturation End Value (0 - 100)
-            sat_end: satEn,
+            sat_end: satEn || 80,
 
             // Saturation Curve (See Curves Section)
-            sat_curve: "easeOutQuad",
+            sat_curve: satWv || "easeOutQuad",
             // Saturation Rate (0 - 200)
             sat_rate: 75,
 
 
             // Luminosity Start Value (0 - 100)
-            lum_start: lumSt,
+            lum_start: lumSt || 0,
             // Luminosity End Value (0 - 100)
-            lum_end: lumEn,
+            lum_end: lumEn || 100,
 
             // Luminosity Curve (See Curves Section)
-            lum_curve: "easeOutQuad",
+            lum_curve: lumWv || "easeOutQuad",
 
             // Modifier Scale
             // Every generated color gets a modifier (label) that
