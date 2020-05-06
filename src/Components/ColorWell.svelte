@@ -4,7 +4,7 @@
 </script>
 
 
-<!-- <code>{wellColor}</code>     -->
+<code>{wellColor}</code>    
 <input class:margin type="color" bind:value={wellColor} name="selectedColor" id="colorWell">
 <!-- <label for="colorWell">HEX Color</label><br> -->
 
@@ -41,6 +41,9 @@
     code {
         font-size: 1.75em;
         margin-bottom: 0.5em;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .05em;
     }
         
 </style>
