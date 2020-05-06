@@ -22,8 +22,8 @@
     }
 
     .colorSamples {
-        height: 5em;
-        width: 5em;
+        height: 7em;
+        width: 7em;
         box-sizing: content-box;
         box-sizing: border-box;
         display: inline-flex;
@@ -31,6 +31,7 @@
         justify-content: center;
         text-align: center;
         padding: 1.5em 0;
+        border: 4px solid #444;
         border-radius: 100%;
         margin-right: 1em;
         margin-bottom: 1em;
