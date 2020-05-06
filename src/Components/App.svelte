@@ -3,17 +3,17 @@
   import ColorWell from './ColorWell'
   import ColorPalBase from './ColorPalBase'
 
-  let selColor = '#56ac89' // initial color
+  $: selColor = '#56ac89' // initial color
   let selSteps = 2
 
 </script>
 
 
 <Header bgColor={selColor} />
+
 <main>
 
-  <p>Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p>
-
+  <p id="instructions">Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p>
   <ColorWell bind:wellColor={selColor} margin/>
   <!-- <input type="text" bind:value={selColor}> -->
 
@@ -29,6 +29,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+
+  #instructions {
+    margin-bottom: 2em;
+    font-size: 2em;
   }
 
 </style>
