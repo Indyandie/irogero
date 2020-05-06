@@ -2,7 +2,9 @@
     export let wellColor = '#ff0000'
     export let margin = false
 </script>
-    
+
+
+<!-- <code>{wellColor}</code>     -->
 <input class:margin type="color" bind:value={wellColor} name="selectedColor" id="colorWell">
 <!-- <label for="colorWell">HEX Color</label><br> -->
 
@@ -16,10 +18,10 @@
         -webkit-appearance: none;
         outline: none;
         border: none;
-        width: 4em;
-        height: 4em;
-        border: none;
-        border-radius: 40px;
+        width: 7em;
+        height: 7em;
+        border: 4px solid #444;
+        border-radius: 100%;
         background: none;
         transition: background-color 300ms linear;
     }
@@ -34,6 +36,11 @@
 
     .margin {
         margin-bottom: 2em;
+    }
+
+    code {
+        font-size: 1.75em;
+        margin-bottom: 0.5em;
     }
         
 </style>
