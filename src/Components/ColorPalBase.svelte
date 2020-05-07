@@ -1,6 +1,7 @@
 <script>
 
     import { beforeUpdate } from 'svelte'
+    import ColorWell from './ColorWell'
     import InputRange from './InputRange'
     import PalColor from './PalColor'
     import Colorwave from './Colorwave'
@@ -26,7 +27,7 @@
     }
 
     export let baseColor = '#ff0000'
-    export let steps = 3
+    export let steps = 4
     let hueBound = 22
     let satBound = 50
     let lightBound = 30
@@ -79,9 +80,13 @@ beforeUpdate( async () => {
 
 <!-- {@debug palette} -->
 
-<div>
-    <InputRange bind:rngVal={steps} rngMin={2} rngMax={32} rngLabel={'Steps'} margin/>
+<div class="controls">
     <Colorwave bind:selectedWave={satWave} />
+    <InputRange bind:rngVal={satBound} rngMin={10} rngMax={45} rngLabel={'Sat'} margin/>
+    <InputRange bind:rngVal={hueBound} rngMin={10} rngMax={100} rngLabel={'Hue shift'} margin/>
+    <ColorWell bind:wellColor={baseColor} margin/>
+    <InputRange bind:rngVal={steps} rngMin={2} rngMax={5} rngLabel={'Steps'} margin/>
+    <InputRange bind:rngVal={lightBound} rngMin={20} rngMax={50} rngLabel={'Light'} margin/>
     <Colorwave bind:selectedWave={lightWave} />
 </div>
 
@@ -101,6 +106,16 @@ beforeUpdate( async () => {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        height: 100%;
+    }
+
+    .controls {
+        width: 100%;
+        padding: 0 2em;
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: space-between;
+        align-items: center;
     }
 
 </style>
