@@ -1,10 +1,8 @@
 <script>
   import Header from './Header'
-  import ColorWell from './ColorWell'
   import ColorPalBase from './ColorPalBase'
 
   $: selColor = '#56ac89' // initial color
-  let selSteps = 2
 
 </script>
 
@@ -13,18 +11,15 @@
 
 <main>
 
-  <p id="instructions">Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p>
-  <ColorWell bind:wellColor={selColor} margin/>
-  <!-- <input type="text" bind:value={selColor}> -->
-
-  <ColorPalBase bind:baseColor={selColor} bind:steps={selSteps}/>
+  <!-- <p id="instructions">Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p> -->
+  <ColorPalBase bind:baseColor={selColor} />
 
 </main>
 
 
 <style>
   main {
-    padding: 2em;
+    padding: 2em 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +27,7 @@
   }
 
   #instructions {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     font-size: 2em;
   }
 
