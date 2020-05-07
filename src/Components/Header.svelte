@@ -3,7 +3,7 @@
 </script>
 
 <header style="{`background: ${bgColor};`}">
-    <h1><i class="fas fa-frog"></i> Irogero</h1> 
+    <h1><i class="fal fa-frog"></i> Irogero</h1> 
 </header>
 
 <style>
