@@ -2,7 +2,7 @@
   import Header from './Header'
   import ColorPalBase from './ColorPalBase'
 
-  $: selColor = '#56ac89' // initial color
+  let selColor = '#56ac89' // initial color
 
 </script>
 
@@ -11,7 +11,6 @@
 
 <main>
 
-  <!-- <p id="instructions">Pick a <strong style={`color: ${selColor}`}>colour</strong>.</p> -->
   <ColorPalBase bind:baseColor={selColor} />
 
 </main>
@@ -24,11 +23,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  #instructions {
-    margin-bottom: 1em;
-    font-size: 2em;
   }
 
 </style>
