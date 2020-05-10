@@ -8,6 +8,7 @@
     import { generate, createPal } from '../js/color-gen'
     import chm from 'chroma-js'
 
+    // keeps color value within bounds of 0 360 
     function convertColor(color) {
         if (color > 359) {
             return (color - 359)
@@ -17,6 +18,7 @@
         return color
     }
 
+    // keeps saturation and value in the bounds of 0 and 100
     function convertSatVal(satval) {
         if (satval > 100) {
             return 100
@@ -27,25 +29,28 @@
     }
 
     export let baseColor = '#ff0000'
-    export let steps = 4
+    export let steps = 2
     let hueBound = 22
     let satBound = 50
     let lightBound = 30
-    $: baseColorHue = chm(baseColor).hsv()[0]
-    $: baseColorSat = chm(baseColor).hsv()[1] * 100
-    $: baseColorLight = chm(baseColor).hsv()[2] * 100
-    $: baseColorHSV = chm(baseColor).hsv()
-    $: lightColorHue = convertColor(baseColorHue - hueBound)
-    $: lightColorSat = convertSatVal(baseColorSat - satBound )
-    $: lightColorLight = convertSatVal(baseColorLight + lightBound)
-    $: darkColorHue = convertColor(baseColorHue + hueBound)
-    $: darkColorSat = convertSatVal(baseColorSat + satBound )
-    $: darkColorLight = convertSatVal(baseColorLight - lightBound)
-    $: basePal = []
-    let hueWave = 'easeInQuad'
-    $: satWave = 'easeInSine'
-    $: lightWave = 'easeOutSine'
+    $: baseColorHSV     = chm(baseColor).hsv()
+    $: baseColorHue     = baseColorHSV[0]
+    $: baseColorSat     = baseColorHSV[1] * 100
+    $: baseColorLight   = baseColorHSV[2] * 100
 
+    $: lightColorHue    = convertColor(baseColorHue - hueBound)
+    $: lightColorSat    = convertSatVal(baseColorSat - satBound )
+    $: lightColorLight  = convertSatVal(baseColorLight + lightBound)
+
+    $: darkColorHue     = convertColor(baseColorHue + hueBound)
+    $: darkColorSat     = convertSatVal(baseColorSat + satBound )
+    $: darkColorLight   = convertSatVal(baseColorLight - lightBound)
+    
+    let hueWave     = 'linear'
+    $: satWave      = 'easeInSine'
+    $: lightWave    = 'easeOutSine'
+
+    $: basePal = []
 
 // onMount( async() => {
 //     createPal(4)
@@ -94,7 +99,6 @@ beforeUpdate( async () => {
     
 {#each basePal as item}
     <PalColor textColor={item.displayColor} colorName={item.label} colorHex={item.hex}/>
-
 {/each}
 
 </section>
