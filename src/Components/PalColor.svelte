@@ -9,8 +9,7 @@
 
 <div  class="colorSamples" style="background:{colorHex}">
     <div class="colour" style={`color: ${textColor}`} >
-        {colorName} <br>
-        <strong>{colorHex}</strong>
+        {colorHex.substr(1)}
     </div>
 </div>
 
@@ -29,14 +28,13 @@
         box-sizing: content-box;
         box-sizing: border-box;
         display: inline-flex;
-        align-items: center;
+        padding-top: 1em;
+        font-family: 'Tofino', monospace;
+        align-items: flex-start;
         justify-content: center;
         text-align: center;
-        padding: 1.5em 0;
-        /* border: 4px solid #444; */
-        /* border-radius: 100%; */
-        /* margin-right: 1em; */
-        margin-bottom: 1em;
+        font-size: 2.5em;
+        text-transform: uppercase;
         transition: all 300ms linear;
     }
 
