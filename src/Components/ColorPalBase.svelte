@@ -29,7 +29,7 @@
     }
 
     export let baseColor = '#ff0000'
-    export let steps = 2
+    export let steps = 4
     let hueBound = 22
     let satBound = 50
     let lightBound = 30
@@ -100,13 +100,13 @@ beforeUpdate( async () => {
 
 <!-- {@debug palette} -->
 
-<div class="controls">
+<div class="controls"  >
     <Colorwave bind:selectedWave={satWave} />
-    <InputRange bind:rngVal={satBound} rngMin={10} rngMax={45} rngLabel={'Sat'} margin/>
-    <InputRange bind:rngVal={hueBound} rngMin={10} rngMax={100} rngLabel={'Hue shift'} margin/>
-    <ColorWell bind:wellColor={baseColor} margin/>
-    <InputRange bind:rngVal={steps} rngMin={2} rngMax={5} rngLabel={'Steps'} margin/>
-    <InputRange bind:rngVal={lightBound} rngMin={20} rngMax={50} rngLabel={'Light'} margin/>
+    <InputRange bind:rngVal={satBound} rngMin={10} rngMax={45} rngLabel={'Sat'} />
+    <InputRange bind:rngVal={hueBound} rngMin={10} rngMax={100} rngLabel={'Hue shift'} />
+    <ColorWell bind:wellColor={baseColor} />
+    <InputRange bind:rngVal={steps} rngMin={2} rngMax={5} rngLabel={'Steps'} customLabel={steps*2-1}/>
+    <InputRange bind:rngVal={lightBound} rngMin={20} rngMax={50} rngLabel={'Light'} />
     <Colorwave bind:selectedWave={lightWave} />
 </div>
 
@@ -129,9 +129,12 @@ beforeUpdate( async () => {
     }
 
     .controls {
+        position: absolute;
+        top: 69px;
         width: 100%;
-        padding: 0 2em;
+        padding: 1em 1em;
         display: flex;
+        background: white;
         /* flex-direction: column; */
         justify-content: space-between;
         align-items: center;

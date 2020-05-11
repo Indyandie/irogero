@@ -45,9 +45,9 @@
 
 <style>
     select {
-        min-width: 180px;
+        /* min-width: 180px; */
         padding: 0.75em;
-        margin-bottom: 2em;
+        /* margin-bottom: 2em; */
         border: 2px solid #444;
     }
 </style>

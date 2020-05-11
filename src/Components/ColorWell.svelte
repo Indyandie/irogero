@@ -18,7 +18,7 @@
         -webkit-appearance: none;
         outline: none;
         border: none;
-        width: 120px;
+        min-width: 32px;
         height: 3em;
         /* width: 7em;
         height: 7em; */
@@ -37,15 +37,7 @@
         } */
 
     .margin {
-        margin-bottom: 2em;
-    }
-
-    code {
-        font-size: 1.75em;
-        margin-bottom: 0.5em;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: .05em;
+        /* margin-bottom: 2em; */
     }
         
 </style>
