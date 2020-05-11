@@ -68,33 +68,42 @@
 
     
 
-beforeUpdate( async () => {
-    
-    let palLt = createPal(
-        steps, 
-        lightColorHue, baseColorHue, 
-        lightColorSat, baseColorSat, 
-        lightColorLight, baseColorLight,
-        hueWave, satWave,  
-    )
+    beforeUpdate( async () => {
+        
+        let palLt = createPal(
+            steps, 
+            lightColorHue, baseColorHue, 
+            lightColorSat, baseColorSat, 
+            lightColorLight, baseColorLight,
+            hueWave, satWave,  
+        )
 
-    palLt.pop()
+        palLt.pop()
 
-    let palDk = createPal(
-        steps, 
-        baseColorHue, darkColorHue, 
-        baseColorSat, darkColorSat, 
-        baseColorLight, darkColorLight, 
-        hueWave, undefined, lightWave
-    )
-    
-    basePal = [].concat(palLt, palDk);
+        let palDk = createPal(
+            steps, 
+            baseColorHue, darkColorHue, 
+            baseColorSat, darkColorSat, 
+            baseColorLight, darkColorLight, 
+            hueWave, undefined, lightWave
+        )
+        
+        basePal = [].concat(palLt, palDk);
 
         // colors.set([basePal[0].hex])
         updateColors()
 
-})
+    })
 
+    function randBaseColor() {
+        baseColor = chm.random()    
+    }
+
+    document.addEventListener('keydown', event => {
+        if (event.code === 'Space') {
+            randBaseColor()
+        }
+    })
 
 </script>
 
