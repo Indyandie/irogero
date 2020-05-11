@@ -1,5 +1,5 @@
 <script>
-
+    import { colors } from './stores/store'
     import { beforeUpdate } from 'svelte'
     import ColorWell from './ColorWell'
     import InputRange from './InputRange'
@@ -56,6 +56,18 @@
 //     createPal(4)
 // })
 
+    function updateColors() {
+        colors.update(n => {
+            n = []
+            basePal.forEach(color => {
+                n.push(color.hex)
+            });
+            return n
+        })
+    }
+
+    
+
 beforeUpdate( async () => {
     
     let palLt = createPal(
@@ -77,6 +89,9 @@ beforeUpdate( async () => {
     )
     
     basePal = [].concat(palLt, palDk);
+
+        // colors.set([basePal[0].hex])
+        updateColors()
 
 })
 
