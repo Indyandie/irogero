@@ -1,16 +1,14 @@
 <script>
     import {fade} from 'svelte/transition'
 
-    export let colorList = [
-        'red', 'blue', 'yellow', 'orange'
-    ]
+    export let colorList = []
 
     export let visibility = false
 </script>
 
 <div id="overlay" transition:fade>
     <div id="modal">
-        <h1>Hex</h1>
+        <h1>Color Hex</h1>
         {#each colorList as item}
         <p>
             {item}
@@ -25,7 +23,8 @@
 <style>
     #overlay {
         position: absolute;
-        background: rgba(0, 0, 0, .45);
+        background: rgba(255, 255, 255, .45);
+        /* opacity: .45; */
         width: 100%;
         height: 100%;
         display: flex;
@@ -36,6 +35,7 @@
     }
 
     #modal {
+        opacity: 1;
         background: white;
         margin-top: 7em;
         padding: 2em; 
@@ -53,8 +53,8 @@
     }
 
     button {
-        background: lightgray;
-        color: black; 
+        background: var(--base-color);
+        color: var(--color-0); 
         font-size: 1.5em;
         padding: 0.5em;
         margin-top: 1em

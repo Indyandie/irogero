@@ -1,9 +1,16 @@
-import { writable } from 'svelte/store'
+import { css, injectGlobal } from 'emotion'
+import { writable, derived } from 'svelte/store'
 
-let colors = writable(
+export let colors = writable(
     [
         'red', 'green', 'blue'
     ]
 )
 
-export {colors}
+export let style = derived(
+    colors, 
+    $css => css`
+        color: ${$css[$css.length-1]};
+        background: ${$css[$css.length/2]};
+    `
+)

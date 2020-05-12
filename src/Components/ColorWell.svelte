@@ -10,10 +10,6 @@
 
 <style>
 
-    label {
-        margin-bottom: 2em;
-    }
-
     input[type="color"] {
         -webkit-appearance: none;
         outline: none;
@@ -36,9 +32,7 @@
         border-radius: 40px;
         } */
 
-    .margin {
-        /* margin-bottom: 2em; */
-    }
+
         
 </style>
 

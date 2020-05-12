@@ -122,7 +122,7 @@
 <section>
     
 {#each basePal as item}
-    <PalColor textColor={item.displayColor} colorName={item.label} colorHex={item.hex}/>
+    <PalColor textColor={item.displayColor} colorHex={item.hex}/>
 {/each}
 
 </section>

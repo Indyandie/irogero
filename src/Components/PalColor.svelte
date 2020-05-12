@@ -4,7 +4,6 @@
     import { css } from 'emotion'
 
     export let textColor = '#ffffff'
-    export let colorName = 'name'
     export let colorHex = '#00ff00'
 
     let visible = false
@@ -50,17 +49,9 @@
 
 <style>
 
-    .colour {
-        
-    }
-
     .colorSamples {
-        min-height: 10em;
         height: 100%;
-        flex-grow: 1; 
-        min-width: 10%;
-        box-sizing: content-box;
-        box-sizing: border-box;
+        flex-grow: 2; 
         display: inline-flex;
         padding-top: 4em;
         font-family: 'Tofino', monospace;
