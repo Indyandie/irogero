@@ -3,7 +3,7 @@
 </script>
 
 <header>
-    <h1><i class="fal fa-frog"></i> Irogero</h1> 
+    <h1><i class="fal fa-frog"></i>色ーげろ</h1> 
     <div id="controls">
         <slot>
             <i class="fas fa-hand-spock"></i>
@@ -25,6 +25,12 @@
     h1 {
         margin: 0;
         margin-right: .4em;
+        font-family: 'Tofino', 'Courier New', Courier, monospace;
+        font-weight: 300;
+    }
+
+    .fa-frog {
+        margin-right: .25em;
     }
 
     #controls {
