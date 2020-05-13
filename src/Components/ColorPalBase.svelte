@@ -122,7 +122,7 @@
 <section>
     
 {#each basePal as item}
-    <PalColor textColor={item.displayColor} colorHex={item.hex}/>
+    <PalColor colorObj={item} />
 {/each}
 
 </section>
@@ -135,6 +135,7 @@
         justify-content: center;
         flex-wrap: wrap;
         height: 100%;
+        background: var(--base-color);
     }
 
     .controls {
