@@ -4,8 +4,6 @@
     import { css } from 'emotion'
 
     export let colorObj = {}
-
-    console.log(colorObj)
     
     $: textColor = colorObj.displayColor || '#ffffff'
     $: colorHex = colorObj.hex || '#00ff00'
