@@ -5,10 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel index.html --open",
-    "start": "rm -rf dist && parcel serve index.html",
-    "server": "npm run build && serve -l 8258 -s build",
-    "build": "rm -rf build && parcel build --no-source-maps index.html -d build"
+    "dev": "parcel src/index.html --open",
+    "start": "rm -rf dist && parcel serve src/index.html --no-cache --port 4321",
+    "server": "npm run build && serve -l 8080 -s build",
+    "build": "rm -rf build && parcel build --no-source-maps src/index.html -d build"
   },
   "keywords": [
     "svelte",
