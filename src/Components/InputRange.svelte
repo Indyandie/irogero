@@ -1,5 +1,5 @@
 <script>
-    export let rngVal = 10
+    export let rngVal = 4
     export let rngMin = 0
     export let rngMax = 100
     export let rngLabel = 'Label'

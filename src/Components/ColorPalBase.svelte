@@ -29,10 +29,10 @@
     }
 
     export let baseColor = '#ff0000'
-    export let steps = 4
     let hueBound = 22
     let satBound = 50
     let lightBound = 30
+    $: steps = 4
     $: baseColorHSV     = chm(baseColor).hsv()
     $: baseColorHue     = baseColorHSV[0]
     $: baseColorSat     = baseColorHSV[1] * 100
@@ -139,15 +139,59 @@
     }
 
     .controls {
-        position: absolute;
-        top: 69px;
         width: 100%;
-        padding: 1em 1em;
-        display: flex;
         background: white;
-        /* flex-direction: column; */
-        justify-content: space-between;
-        align-items: center;
+    }
+
+    @media only screen and (min-width : 320px) {
+        .controls {
+            display: none;
+            flex-direction: column;
+        }
+
+        section {
+            display: flex;
+            overflow-y: scroll;
+            height: 100vh;
+            padding-bottom: 25%;
+        }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+        
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+        .controls {
+            position: absolute;
+            top: 69px;
+            padding: 1em 1em;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        section {
+            justify-content: center;
+            flex-wrap: wrap;
+            height: 100%;
+            padding-bottom: 0;
+        }
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
     }
 
 </style>

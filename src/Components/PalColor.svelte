@@ -1,7 +1,7 @@
 <script>
     import { fade, fly } from 'svelte/transition'
     import copy from 'copy-to-clipboard'
-    import { css } from 'emotion'
+    import { css, injectGlobal } from 'emotion'
 
     export let colorObj = {}
     
@@ -25,8 +25,13 @@
     `
 
     $: color = css`
-        width: ${width}%;
         background: ${colorHex};
+    `
+
+    $: injectGlobal`
+        :root {
+            --pal-width: ${width}%;
+        }
     `
 
 </script>
@@ -51,21 +56,10 @@
 <style>
 
     .colorSamples {
-        height: 100%;
-        /* flex-grow: 2;  */
-        display: inline-flex;
-        padding-top: 4em;
         font-family: 'Tofino', monospace;
-        align-items: flex-start;
-        justify-content: center;
         text-align: center;
-        font-size: 2.5em;
         text-transform: uppercase;
         transition: background 700ms linear;
-    }
-
-    .colour {
-        transition: color 140ms linear;
     }
 
     .colorSamples:active {
@@ -73,27 +67,98 @@
         
     }
 
+    .colour {
+        transition: color 140ms linear;
+    }
+
     .colorSamples:active .colour {
         color: white !important;
     }
 
-    .colorPal {
-        display: flex;
-        justify-content: start;
-        flex-wrap: wrap;
-    }
-
     .notification {
-        position: absolute;
-        bottom: 10vh;
-        border-radius: 1em;
-        width: initial;
-        padding: 1em;
+        border-radius: 0.8em;
+        padding: 0.8em;
         font-family: 'Tofino', Courier, monospace;
-        font-size: 0.5em;
+        font-size: 1em;
         text-transform: capitalize;
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
+    .fas {
+        margin-right: 8px;
+    }
 
+    /* TINY */
+    @media only screen and (min-width : 320px) {
+
+        .colorSamples {
+            width: 100%;
+            height: 20%;
+            display: inline-flex;
+            align-content: flex-start;
+            justify-content: space-between;
+            padding: 0 1em;
+            align-items: center;
+        }
+
+        .colour {
+            font-size: 1.75em;
+        }
+
+        .notification {
+
+        }
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+        .colour {
+            font-size: 1.8em;
+        }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+        .colorSamples {
+            height: 100%;
+            width: var(--pal-width);
+            display: inline-flex;
+            padding: 15% 0 0;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .colour {
+            font-size: 1.25em;
+            display: flex;
+            justify-content: start;
+            flex-wrap: wrap;
+        }
+
+        .notification {
+            position: absolute;
+            bottom: 10vh;
+            width: initial;
+            padding: 1em;
+        }
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+        .colour {
+            font-size: 1.8em;
+        }
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
 
 </style>
