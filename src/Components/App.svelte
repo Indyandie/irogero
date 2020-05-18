@@ -33,7 +33,7 @@
 
 <Header bgColor={selColor} >
   <i  on:click={() => {modalVisible=true}}
-      class="far fa-save">
+      class="fal fa-save">
   </i>
 </Header>
 
