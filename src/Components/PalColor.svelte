@@ -1,5 +1,5 @@
 <script>
-    import { fade, fly } from 'svelte/transition'
+    import { fade } from 'svelte/transition'
     import copy from 'copy-to-clipboard'
     import { css, injectGlobal } from 'emotion'
 
@@ -26,12 +26,9 @@
 
     $: color = css`
         background: ${colorHex};
-    `
-
-    $: injectGlobal`
-        :root {
-            --pal-width: ${width}%;
-        }
+        @media (min-width: 768px) {
+            width: ${width}% !important;
+        };
     `
 
 </script>
@@ -95,20 +92,16 @@
 
         .colorSamples {
             width: 100%;
-            height: 20%;
-            display: inline-flex;
+            display: flex;
             align-content: flex-start;
             justify-content: space-between;
             padding: 0 1em;
             align-items: center;
+            min-height: 100px;
         }
 
         .colour {
             font-size: 1.75em;
-        }
-
-        .notification {
-
         }
 
     }
@@ -124,13 +117,10 @@
     @media only screen and (min-width : 768px) {
 
         .colorSamples {
-            height: 100%;
-            width: var(--pal-width);
-            display: inline-flex;
-            padding: 15% 0 0;
-            align-items: flex-start;
+            display: flex;
+            padding: 0;
+            align-items: center;
             justify-content: center;
-            text-align: center;
         }
 
         .colour {

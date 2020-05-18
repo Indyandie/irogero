@@ -152,8 +152,10 @@
         section {
             display: flex;
             overflow-y: scroll;
-            height: 100vh;
-            padding-bottom: 25%;
+            justify-content: flex-start;
+            /* padding-bottom: 25%; */
+            flex-direction: column;
+            flex: 1;
         }
     }
 
@@ -178,8 +180,11 @@
         section {
             justify-content: center;
             flex-wrap: wrap;
-            height: 100%;
+            flex: 1 0 auto;
             padding-bottom: 0;
+            flex-direction: row;
+            align-items: stretch;
+            height: auto;
         }
 
     }
