@@ -1,5 +1,5 @@
 <script>
-    export let rngVal = 4
+    export let rngVal = 2
     export let rngMin = 0
     export let rngMax = 100
     export let rngLabel = 'Label'
@@ -17,5 +17,9 @@
     .margin {
         /* margin-bottom: 2em; */
         width: auto;
+    }
+
+    input {
+        width: 100%;
     }
 </style>

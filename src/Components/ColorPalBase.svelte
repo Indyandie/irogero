@@ -145,8 +145,27 @@
 
     @media only screen and (min-width : 320px) {
         .controls {
-            display: none;
+            display: flex;
+            position: absolute;
+            top: 0;
             flex-direction: column;
+            padding: 2em 1em;
+            align-items: stretch;
+            justify-content: flex-start;
+            z-index: 1000;
+            /* min-height: 900px; */
+            /* height: auto; */
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        
+
+        :global(.controls > *)  {
+            width: 100%;
+            /* background: lightpink; */
+            height: 56px;
+            margin-bottom: 2em;
         }
 
         section {
@@ -164,18 +183,45 @@
         
     }
 
-    /* Small Devices, Tablets */
+    /* Tablets */
     @media only screen and (min-width : 768px) {
 
         .controls {
-            position: absolute;
-            top: 69px;
+            overflow-y: unset;
+            position: sticky;
+            top: 79px;
             padding: 1em 1em;
-            display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            z-index: 99;
+            /* flex-shrink: 0; */
+            min-height: unset;
+            height: 100px;
         }
+
+        :global(.controls > *)  {
+            margin-bottom: 0;
+            margin-right: 1em;
+        }
+
+        :global(.controls > *:nth-last-child(1))  {
+            margin-right: 0;
+        }
+
+        /* .controls {
+            
+            position: fixed;
+            bottom: 0;
+            flex-direction: column;
+            padding: 1em;
+            align-items: stretch;
+            justify-content: center;
+            z-index: 1000;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        */
 
         section {
             justify-content: center;
