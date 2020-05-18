@@ -31,7 +31,7 @@
 
 <!-- <h1 class={$style} > asdffsad{Math.round($colors.length/2)} </h1> -->
 
-<Header bgColor={selColor} >
+<Header>
   <i  on:click={() => {modalVisible=true}}
       class="fal fa-save">
   </i>
