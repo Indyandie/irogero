@@ -13,7 +13,6 @@
   $: colorLight = $colors[0]
   $: colorDark  = $colors[$colors.length]
 
-
   $: injectGlobal`
     :root {
       --color-0: ${colorLight};
@@ -29,7 +28,6 @@
 <Modal colorList={$colors} bind:visibility={modalVisible} />
 {/if}
 
-<!-- <h1 class={$style} > asdffsad{Math.round($colors.length/2)} </h1> -->
 
 <Header>
   <i  on:click={() => {modalVisible=true}}
