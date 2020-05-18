@@ -1,5 +1,6 @@
 <script>
     import { colors } from './stores/store'
+    import { fade } from 'svelte/transition'
     import { beforeUpdate } from 'svelte'
     import ColorWell from './ColorWell'
     import InputRange from './InputRange'
@@ -116,7 +117,10 @@
 
 <!-- {@debug palette} -->
 
-<div class="controls" class:hide-controls={showControls} >
+<div    class="controls" 
+        class:hide-controls={showControls} 
+        transition:fade
+>
 
     <div id="color-strip">
         {#each basePal as item}
@@ -287,7 +291,8 @@
         }
 
         #random-color {
-            bottom: 1vh;
+            bottom: 2vh;
+            right: unset;
         }
 
         #filters, #close, #color-strip {
