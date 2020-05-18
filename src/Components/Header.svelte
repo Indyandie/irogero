@@ -1,9 +1,9 @@
 <script>
-    export let bgColor = '#56ac89'
+    
 </script>
 
 <header>
-    <h1><i class="fal fa-frog"></i>色ーげろ</h1> 
+    <h1><i class="fas fa-frog"></i>色ーげろ</h1> 
     <div id="controls">
         <slot>
             <i class="fas fa-hand-spock"></i>
@@ -12,12 +12,12 @@
 </header>
 
 <style>
+
     header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         color: var(--color-0); 
-        padding: 1em 2em;
         transition: background-color 400ms linear;
         background: var(--base-color);
     }
@@ -33,7 +33,55 @@
         margin-right: .25em;
     }
 
-    #controls {
-        font-size: 2em;
+
+    @media only screen and (min-width : 320px) {
+        header {
+            padding: 1em;
+            z-index: 100;
+        }
+
+        
+
+        :global(header h1) {
+            font-size: 1.5em;
+        }
+
+        :global(header div) {
+            font-size: 1.5em;
+        }
+        
     }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+        
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+        header {
+            padding: 1em 2em;
+        }
+
+        :global(header h1) {
+            font-size: 2em;
+        }
+
+        :global(header div) {
+            font-size: 2em;
+        }
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
+
 </style>
