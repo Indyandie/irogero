@@ -98,7 +98,8 @@
             justify-content: space-between;
             padding: 0 1em;
             align-items: center;
-            min-height: 100px;
+            min-height: 20vh;
+            flex: 1;
         }
 
         .colour {
