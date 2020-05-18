@@ -81,6 +81,7 @@
         display: inline-flex;
         justify-content: space-between;
         align-items: center;
+        z-index: 99;
     }
 
     .fas {

@@ -105,11 +105,25 @@
         }
     })
 
+    // Hide controls
+    let showControls = true
+
+    function toggleFilters(params) {
+        showControls = !showControls
+    }
+
 </script>
 
 <!-- {@debug palette} -->
 
-<div class="controls"  >
+<div class="controls" class:hide-controls={showControls} >
+
+    <div id="color-strip">
+        {#each basePal as item}
+            <div style={`background: ${item.hex};`}></div>
+        {/each}
+    </div>
+
     <Colorwave bind:selectedWave={satWave} />
     <InputRange bind:rngVal={satBound} rngMin={10} rngMax={45} rngLabel={'Sat'} />
     <InputRange bind:rngVal={hueBound} rngMin={10} rngMax={100} rngLabel={'Hue shift'} />
@@ -117,15 +131,28 @@
     <InputRange bind:rngVal={steps} rngMin={2} rngMax={5} rngLabel={'Steps'} customLabel={steps*2-1}/>
     <InputRange bind:rngVal={lightBound} rngMin={20} rngMax={50} rngLabel={'Light'} />
     <Colorwave bind:selectedWave={lightWave} />
+    
+    <button id="close" class="icon-button" on:click={toggleFilters}>
+        <i class="far fa-times"></i>
+    </button>
 </div>
 
 <section>
-    
-{#each basePal as item}
-    <PalColor colorObj={item} />
-{/each}
+
+    {#each basePal as item}
+        <PalColor colorObj={item} />
+    {/each}
 
 </section>
+
+<button id="filters" class="icon-button" on:click={toggleFilters}>
+    <i class="far fa-sliders-h"></i>
+</button>
+
+<button id="random-color" class="icon-button" on:click={randBaseColor} >
+        <i class="far fa-random"></i>
+</button>
+
 
 
 <style>
@@ -135,7 +162,8 @@
         justify-content: center;
         flex-wrap: wrap;
         height: 100%;
-        background: var(--base-color);
+        /* background: var(--base-color); */
+        background: black;
     }
 
     .controls {
@@ -143,10 +171,58 @@
         background: white;
     }
 
+    #color-strip {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100vw;
+        height: 16px;
+    }
+
+    #color-strip div {
+        flex: 1;
+    }
+
+    #random-color {
+        position: fixed;
+        bottom: 96px;
+        right: 1em;
+        background: black;
+        color: white;
+    }
+
+    #filters {
+        background: white;
+        color: black;
+        position: fixed;
+        bottom: 24px;
+        right: 1em;
+    }
+
+    #filters:active {
+        background: white;
+        color: black;
+    }
+
+    .controls #close {
+        background: black;
+        color: white;
+        position: fixed;
+        align-self: center;
+        margin-bottom: 0;
+        bottom: 1em;
+    }
+
+    .hide-controls {
+        display: none !important;
+    }
+
+    /* Tiny */
     @media only screen and (min-width : 320px) {
         .controls {
             display: flex;
-            position: absolute;
+            position: fixed;
             top: 0;
             flex-direction: column;
             padding: 2em 1em;
@@ -187,6 +263,7 @@
     @media only screen and (min-width : 768px) {
 
         .controls {
+            display: flex !important;
             overflow-y: unset;
             position: sticky;
             top: 79px;
@@ -209,19 +286,13 @@
             margin-right: 0;
         }
 
-        /* .controls {
-            
-            position: fixed;
-            bottom: 0;
-            flex-direction: column;
-            padding: 1em;
-            align-items: stretch;
-            justify-content: center;
-            z-index: 1000;
-            height: 100vh;
-            overflow-y: scroll;
+        #random-color {
+            bottom: 1vh;
         }
-        */
+
+        #filters, #close, #color-strip {
+            display: none;
+        }
 
         section {
             justify-content: center;
@@ -243,6 +314,24 @@
     /* Large Devices, Wide Screens */
     @media only screen and (min-width : 1200px) {
 
+    }
+
+    .icon-button {
+        padding: 0.5em;
+        border-radius: 100%;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1.5em;
+        width: auto !important;
+        height: auto !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.5;
+    }
+
+    .icon-button:active {
+        opacity: 1;
     }
 
 </style>
