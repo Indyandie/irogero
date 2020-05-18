@@ -60,9 +60,4 @@
         margin-top: 1em
     }
 
-    :global(body) {
-        height: 100vh;
-        overflow-y: hidden;
-    }
-
 </style>
