@@ -1,4 +1,5 @@
 <script>
+    import Colorwell from 'svelte-color-well'
     import { colors } from './stores/store'
     import { fade } from 'svelte/transition'
     import { beforeUpdate } from 'svelte'
@@ -97,7 +98,7 @@
     })
 
     function randBaseColor() {
-        baseColor = chm.random()    
+        baseColor = chm.random().hex() 
     }
 
     document.addEventListener('keydown', event => {
@@ -131,7 +132,8 @@
     <Colorwave bind:selectedWave={satWave} />
     <InputRange bind:rngVal={satBound} rngMin={10} rngMax={45} rngLabel={'Sat'} />
     <InputRange bind:rngVal={hueBound} rngMin={10} rngMax={100} rngLabel={'Hue shift'} />
-    <ColorWell bind:wellColor={baseColor} />
+    
+    <Colorwell bind:colorGlob={baseColor} />
     <InputRange bind:rngVal={steps} rngMin={2} rngMax={5} rngLabel={'Steps'} customLabel={steps*2-1}/>
     <InputRange bind:rngVal={lightBound} rngMin={20} rngMax={50} rngLabel={'Light'} />
     <Colorwave bind:selectedWave={lightWave} />
@@ -173,6 +175,10 @@
     .controls {
         width: 100%;
         background: white;
+    }
+    
+    :global(.colorwell-selector) {
+        flex: 1 0 auto;
     }
 
     #color-strip {
