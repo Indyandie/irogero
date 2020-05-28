@@ -18,10 +18,10 @@
   "author": "Andy Contreras",
   "license": "MIT",
   "devDependencies": {
-    "@babel/polyfill": "^7.8.7",
+    "@babel/polyfill": "^7.10.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-svelte": "^4.0.6",
-    "svelte": "^3.22.3"
+    "svelte": "^3.23.0"
   },
   "dependencies": {
     "bezier-easing": "^2.1.0",
@@ -29,6 +29,6 @@
     "copy-to-clipboard": "^3.3.1",
     "emotion": "^10.0.27",
     "serve": "^11.3.1",
-    "svelte-color-well": "^1.0.7"
+    "svelte-color-well": "^1.1.0"
   }
 }
