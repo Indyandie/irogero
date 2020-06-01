@@ -36,7 +36,6 @@
         --gero-track-height: 12px;
         --gero-track-cursor: pointer;
         --gero-track-border-radius: 8px;
-
         --gero-thumb-border: 2px solid #333;
         --gero-thumb-border-radius: 100%;
         --gero-thumb-size: 32px;
