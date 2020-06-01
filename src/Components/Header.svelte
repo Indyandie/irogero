@@ -2,7 +2,7 @@
     
 </script>
 
-<header>
+<header class="gero">
     <h1><i class="fas fa-frog"></i>色ーげろ</h1> 
     <div id="controls">
         <slot>
@@ -33,6 +33,14 @@
         margin-right: .25em;
     }
 
+    :global(header.gero div a i){
+        color: var(--color-0);
+    }
+
+    :global(header.gero div *){
+        cursor: pointer;
+    }
+
 
     @media only screen and (min-width : 320px) {
         header {
@@ -46,11 +54,17 @@
             font-size: 1.5em;
         }
 
-        :global(header div) {
+    :global(header div) {
             font-size: 1.5em;
         }
         
     }
+
+    :global(header #controls *:last-child) {
+        margin-left: 0.125em;
+    }
+
+
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (min-width : 480px) {

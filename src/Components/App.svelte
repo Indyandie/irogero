@@ -33,6 +33,9 @@
   <i  on:click={() => {modalVisible=true}}
       class="fal fa-save">
   </i>
+  <a target="_blank" href="https://github.com/Indyandie/irogero">
+    <i class="fab fa-github"></i>
+  </a>
 </Header>
 
 <main>
@@ -44,10 +47,12 @@
 
 
 <style>
+
   main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+  
 </style>
