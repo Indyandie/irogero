@@ -309,8 +309,17 @@
         }
 
         #random-color {
-            bottom: 2vh;
+            bottom: 3vh;
             right: unset;
+            width: 64px;
+            height: 64px;
+        }
+
+        #random-color i {
+            font-size: 1.25em;
+            margin: auto;
+            vertical-align: middle;
+            /* height: 100%; */
         }
 
         #filters, #close, #color-strip {
@@ -345,8 +354,8 @@
         min-width: 44px;
         min-height: 44px;
         font-size: 1.5em;
-        width: auto !important;
-        height: auto !important;
+        width: auto ;
+        height: auto ;
         display: flex;
         align-items: center;
         justify-content: center;
