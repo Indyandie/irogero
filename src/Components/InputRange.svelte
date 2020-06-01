@@ -30,7 +30,7 @@
 
     :root {
         --gero-track-bg-color: #333;
-        --gero-track-bg-color-focus: cornflowerblue;
+        --gero-track-bg-color-focus: var(--base-color);
         --gero-track-width: 100%;
         --gero-track-width: 100%;
         --gero-track-height: 12px;
