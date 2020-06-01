@@ -187,7 +187,7 @@
         left: 0;
         display: flex;
         width: 100vw;
-        height: 16px;
+        height: 24px;
     }
 
     #color-strip div {
@@ -235,7 +235,7 @@
             position: fixed;
             top: 0;
             flex-direction: column;
-            padding: 2em 1em;
+            padding: 3em 1em;
             align-items: stretch;
             justify-content: flex-start;
             z-index: 1000;
@@ -265,19 +265,28 @@
     }
 
     /* Extra Small Devices, Phones */ 
-    @media only screen and (min-width : 480px) {
+    @media only screen and (min-width : 320px) {
+        :global(.colorwell-selector) {
+            order: 99;
+            margin-left: auto;
+            flex: none;
+        }
         
     }
 
     /* Tablets */
     @media only screen and (min-width : 768px) {
+        
+        :global(.colorwell-selector) {
+            order: unset;
+        }
 
         .controls {
             display: flex !important;
             overflow-y: unset;
             position: sticky;
             top: 79px;
-            padding: 1em 1em;
+            padding: 2em 1em;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
