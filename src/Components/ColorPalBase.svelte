@@ -118,7 +118,7 @@
 
 <!-- {@debug palette} -->
 
-<div    class="controls" 
+<div    class="color-filters" 
         class:hide-controls={showControls} 
         transition:fade
 >
@@ -172,7 +172,7 @@
         background: black;
     }
 
-    .controls {
+    .color-filters {
         width: 100%;
         background: white;
     }
@@ -215,7 +215,7 @@
         color: black;
     }
 
-    .controls #close {
+    .color-filters #close {
         background: black;
         color: white;
         position: fixed;
@@ -230,7 +230,7 @@
 
     /* Tiny */
     @media only screen and (min-width : 320px) {
-        .controls {
+        .color-filters {
             display: flex;
             position: fixed;
             top: 0;
@@ -247,11 +247,12 @@
 
         
 
-        :global(.controls > *)  {
+        :global(.color-filters > *)  {
             width: 100%;
             /* background: lightpink; */
             height: 56px;
             margin-bottom: 2em;
+
         }
 
         section {
@@ -281,7 +282,7 @@
             order: unset;
         }
 
-        .controls {
+        .color-filters {
             display: flex !important;
             overflow-y: unset;
             position: sticky;
@@ -296,12 +297,14 @@
             height: 100px;
         }
 
-        :global(.controls > *)  {
+        :global(.color-filters > *)  {
             margin-bottom: 0;
-            margin-right: 1em;
+            margin-right: 3em;
         }
 
-        :global(.controls > *:nth-last-child(1))  {
+        
+
+        :global(.color-filters > *:nth-last-child(2))  {
             margin-right: 0;
         }
 
