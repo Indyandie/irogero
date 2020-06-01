@@ -43,12 +43,11 @@
 
 
     @media only screen and (min-width : 320px) {
+
         header {
             padding: 1em;
             z-index: 100;
         }
-
-        
 
         :global(header h1) {
             font-size: 1.5em;
@@ -64,7 +63,11 @@
         margin-left: 0.125em;
     }
 
-
+    :global(header #controls *) {
+        /* min-width: 44px; */
+        /* background: red; */
+        font-size: 32px;
+    }
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (min-width : 480px) {
